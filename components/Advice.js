@@ -24,7 +24,7 @@ export default class Advice extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 56,
+    
     marginTop : 5,
     padding: 5,
   }

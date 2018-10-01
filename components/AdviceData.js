@@ -11,7 +11,7 @@ export default class AdviceData extends React.Component {
 
     render() {
         return (
-            <View style={styles.viewStyle}>
+            <View>
                 <View style={styles.dataStyle}>
 
                 <Text style={styles.textStyle}>
@@ -30,7 +30,6 @@ export default class AdviceData extends React.Component {
 
 const styles = StyleSheet.create({
     dataStyle: {
-        backgroundColor: '#80ced6',
         flex: 1,
         alignItems: "center",
         justifyContent: "center"

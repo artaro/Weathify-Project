@@ -8,6 +8,8 @@ import {
 import { Container, Header, Left, Body, Right, Button, Icon, Title } from 'native-base';
 
 export default class WeatherData extends React.Component {
+
+    
     render() {
         return (
 
@@ -37,16 +39,8 @@ export default class WeatherData extends React.Component {
 
 const styles = StyleSheet.create({
     dataStyle: {
-        backgroundColor: '#00b377',
         flex: 1,
         alignItems: "center",
-        justifyContent: "center"
-
-    },
-
-    viewStyle: {
-        height: 150,
-        flexDirection: "row",
         justifyContent: "center"
 
     },
@@ -55,6 +49,11 @@ const styles = StyleSheet.create({
         textShadowColor: 'rgba(0, 0, 0, 0.75)',
          textShadowOffset: {width: -1, height: 1},
          textShadowRadius: 10
+    },
+    viewStyle: {
+        flex : 1,
+        flexDirection: 'row',
+
     }
 
 })
