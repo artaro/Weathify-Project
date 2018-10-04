@@ -24,7 +24,7 @@ export default class WeatherData extends React.Component {
                 </View>
                 <View style={styles.dataStyle}>
                     <Image style={{ width: 80, height: 80 }} source={{ uri: `http://openweathermap.org/img/w/${this.props.icon}.png` }}></Image>
-                    <Text style={styles.textStyle}>{this.props.description}</Text>
+                    <Text style={styles.descriptionStyle}>{this.props.description}</Text>
                 </View>
                 <View style={styles.dataStyle}>
                     <Text style={styles.textStyle}>Humidity</Text>
@@ -48,7 +48,12 @@ const styles = StyleSheet.create({
         color: 'white',
         textShadowColor: 'rgba(0, 0, 0, 0.75)',
          textShadowOffset: {width: -1, height: 1},
-         textShadowRadius: 10
+         textShadowRadius: 10,
+         fontWeight: 'bold'
+    },
+    descriptionStyle:{
+        color: 'white'
+
     },
     viewStyle: {
         flex : 1,

@@ -1,38 +1,24 @@
 import React from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
-
 import WeatherData from "./WeatherData";
-import {
-  Container,
-  Header,
-  Left,
-  Body,
-  Right,
-  Button,
-  Icon,
-  Title
-} from "native-base";
 
 export default class Weather extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      forecast: {
-        main: "-",
-        description: "-",
-        temp: 0
-      }
+      currentWeather: {}
     };
   }
 
   fetchData = () => {
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${this.props.currentCity},th&units=metric&APPID=02c712e3cbbb06046fbef6d0861ed6af`
+      `http://api.openweathermap.org/data/2.5/weather?q=${
+        this.props.currentCity
+      },th&units=metric&APPID=02c712e3cbbb06046fbef6d0861ed6af`
     )
       .then(response => response.json())
       .then(json => {
         this.setState({
-          forecast: {
+          currentWeather: {
             temp: json.main.temp,
             icon: json.weather[0].icon,
             description: json.weather[0].description,
@@ -48,18 +34,6 @@ export default class Weather extends React.Component {
   componentDidMount = () => this.fetchData();
 
   render() {
-    return (
-     
-        <WeatherData {...this.state.forecast} />
-      
-    );
+    return <WeatherData {...this.state.currentWeather} />;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    
-    marginTop: 5,
-    padding: 5
-  }
-});
