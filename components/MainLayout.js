@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text, Image, Alert,TextInput } from "react-native";
+import { StyleSheet, View, Text, Image, Alert, TextInput } from "react-native";
 
 import Weather from "./Weather";
 import Advice from "./Advice";
-
+import Modal from "react-native-modalbox";
 import {
   Container,
   Header,
@@ -36,9 +36,7 @@ export default class MainLayout extends Component {
             <Title>Phuket</Title>
           </Body>
           <Right>
-            <Button onPress = {() =>{
-              Alert.alert('Change city !')
-            }} transparent>
+            <Button onPress={() => this.refs.modal3.open()} transparent>
               <Icon name="search" />
             </Button>
             <Button transparent>
@@ -46,9 +44,8 @@ export default class MainLayout extends Component {
             </Button>
           </Right>
         </Header>
-    {/*===============BODY========================*/}
+        {/*===============BODY===============*/}
         <Content>
-          
           <View style={styles.columnLayout}>
             <View style={styles.viewStyle1}>
               <Weather currentCity="Phuket" />
@@ -56,9 +53,21 @@ export default class MainLayout extends Component {
             <View style={styles.viewStyle2}>
               <AdviceData />
             </View>
+            <Modal
+              style={[styles.modal, styles.modal3]}
+              position={"center"}
+              ref={"modal3"}
+            >
+              <Text>Explore weather by city name </Text>
+              <TextInput placeholder="City name" style={styles.textInput} />
+              <View>
+                <Button style={styles.btn}>
+                  <Text style={styles.submitText}>Submit</Text>
+                </Button>
+              </View>
+            </Modal>
           </View>
-          <TabBar/>
-
+          <TabBar />
         </Content>
       </Container>
     );
@@ -79,7 +88,7 @@ const styles = StyleSheet.create({
     height: 150,
     flexDirection: "row",
     justifyContent: "center",
-    backgroundColor: "rgba(0, 60, 90, 0.5)",
+    backgroundColor: "rgba(0, 106, 205, 0.7)",
     margin: 8,
     marginTop: 12,
     borderRadius: 8
@@ -88,8 +97,33 @@ const styles = StyleSheet.create({
     height: 150,
     flexDirection: "row",
     justifyContent: "center",
-    backgroundColor: "rgba(0, 90, 50, 0.5)",
+    backgroundColor: "rgba(0, 106, 205, 0.7)",
     margin: 8,
     borderRadius: 8
+  },
+  modal3: {
+    height: 300,
+    width: 300
+  },
+  modal: {
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  textInput: {
+    padding: 4,
+    fontSize: 18,
+    height: 30,
+    width: "80%",
+    borderColor: "#DDDDDD",
+    borderWidth: 1,
+    marginTop: 10,
+    marginBottom: 10
+  },
+  btn: {
+    borderRadius: 3
+  },
+  submitText: {
+    padding: 5,
+    color: "#DDDDDD"
   }
 });
