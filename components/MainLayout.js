@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text, Image, Alert, TextInput } from "react-native";
-
-import Weather from "./Weather";
-import Advice from "./Advice";
+import { StyleSheet, View, Text, TextInput } from "react-native";
+import WeatherFetching from "./WeatherFetching";
 import Modal from "react-native-modalbox";
 import {
   Container,
@@ -13,13 +11,9 @@ import {
   Button,
   Icon,
   Title,
-  Tab,
-  Tabs,
   Content
 } from "native-base";
-import WeatherData from "./WeatherData";
 import AdviceData from "./AdviceData";
-import ForecastDataTab from "./ForecastDataTab";
 import TabBar from "./TabBar";
 
 export default class MainLayout extends Component {
@@ -48,7 +42,7 @@ export default class MainLayout extends Component {
         <Content>
           <View style={styles.columnLayout}>
             <View style={styles.viewStyle1}>
-              <Weather currentCity="Phuket" />
+              <WeatherFetching currentCity="Phuket" />
             </View>
             <View style={styles.viewStyle2}>
               <AdviceData />
@@ -91,13 +85,14 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 106, 205, 0.7)",
     margin: 8,
     marginTop: 12,
-    borderRadius: 8
+    borderRadius: 8,
   },
   viewStyle2: {
     height: 150,
     flexDirection: "row",
     justifyContent: "center",
     backgroundColor: "rgba(0, 106, 205, 0.7)",
+    marginTop: 2,
     margin: 8,
     borderRadius: 8
   },

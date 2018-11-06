@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
 import {
     Container,
     Header,
@@ -10,13 +9,12 @@ import {
     Icon,
     Title,
     Tab,
-    Tabs
+    Tabs,
+    Content
   } from "native-base";
-import ForecastDataTab from './ForecastDataTab';
-import Forecast from './Forecast';
+import ForecastFetching from './ForecastFetching';
 
 export default class TabBar extends Component {
-  
 
   render() {
     return (
@@ -24,7 +22,9 @@ export default class TabBar extends Component {
         
         <Tabs>
           <Tab heading="Forecast">
-            <Forecast currentCity="Phuket"/>
+          
+            <ForecastFetching currentCity="Phuket"/>
+            
           </Tab>
           <Tab heading="Travel">
             
