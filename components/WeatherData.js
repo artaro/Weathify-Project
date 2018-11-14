@@ -20,13 +20,14 @@ export default class WeatherData extends React.Component {
           <Text style={styles.textStyle}>{this.props.temp} °C</Text>
         </View>
         <View style={styles.dataStyle}>
+         
           <Image
             style={{ width: 80, height: 80 }}
             source={{
               uri: `http://openweathermap.org/img/w/${this.props.icon}.png`
             }}
           />
-          <Text style={styles.descriptionStyle}>{this.props.description}</Text>
+          <Text style={styles.textStyle}>{this.props.description}</Text>
         </View>
         <View style={styles.dataStyle}>
           <Text style={styles.textStyle}>Humidity</Text>

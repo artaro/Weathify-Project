@@ -24,7 +24,8 @@ export default class WeatherFetching extends React.Component {
             temp: json.main.temp,
             icon: json.weather[0].icon,
             description: json.weather[0].description,
-            humidity: json.main.humidity
+            humidity: json.main.humidity,
+            datetime: json.dt
           }
         });
       })
