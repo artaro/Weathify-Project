@@ -11,11 +11,9 @@ export default class WeatherFetching extends React.Component {
     };
   }
 
-  fetchData = () => {
+  fetchData = q => {
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${
-        this.props.currentCity
-      },th&units=metric&APPID=${API_KEY}`
+      `http://api.openweathermap.org/data/2.5/weather?q=${q},th&units=metric&APPID=${API_KEY}`
     )
       .then(response => response.json())
       .then(json => {
@@ -34,7 +32,8 @@ export default class WeatherFetching extends React.Component {
       });
   };
 
-  componentDidMount = () => this.fetchData();
+  componentDidMount = () => this.fetchData(this.props.city);
+  componentWillReceiveProps = nextProps => this.fetchData(nextProps.city);
 
   render() {
     return <WeatherData {...this.state.currentWeather} />;

@@ -22,7 +22,7 @@ export default class WeatherData extends React.Component {
         <View style={styles.dataStyle}>
          
           <Image
-            style={{ width: 80, height: 80 }}
+            style={{ width: 100, height: 100 }}
             source={{
               uri: `http://openweathermap.org/img/w/${this.props.icon}.png`
             }}

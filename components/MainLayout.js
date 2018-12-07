@@ -13,10 +13,26 @@ import {
   Title,
   Content
 } from "native-base";
-import AdviceData from "./AdviceData";
+import Advice from "./Advice";
 import TabBar from "./TabBar";
 
 export default class MainLayout extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentCity: "Phuket",
+      searchText: ""
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const { searchText } = this.state;
+    this.refs.modal3.close();
+    this.setState({ currentCity: searchText });
+  }
+
   render() {
     return (
       <Container>
@@ -27,7 +43,7 @@ export default class MainLayout extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>Phuket</Title>
+            <Title>{this.state.currentCity}</Title>
           </Body>
           <Right>
             <Button onPress={() => this.refs.modal3.open()} transparent>
@@ -42,20 +58,26 @@ export default class MainLayout extends Component {
         <Content>
           <View style={styles.columnLayout}>
             <View style={styles.viewStyle1}>
-              <WeatherFetching currentCity="Phuket" />
+              <WeatherFetching city={this.state.currentCity} />
             </View>
             <View style={styles.viewStyle2}>
-              <AdviceData />
+              <Advice city={this.state.currentCity} />
             </View>
             <Modal
               style={[styles.modal, styles.modal3]}
               position={"center"}
               ref={"modal3"}
             >
-              <Text>Explore weather by city name </Text>
-              <TextInput placeholder="City name" style={styles.textInput} />
+              <Text>Search by city name</Text>
+              <TextInput
+                placeholder="City name"
+                ref={el => (this.element = el)}
+                style={styles.textInput}
+                value={this.state.searchText}
+                onChangeText={searchText => this.setState({ searchText })}
+              />
               <View>
-                <Button style={styles.btn}>
+                <Button style={styles.btn} onPress={this.handleSubmit}>
                   <Text style={styles.submitText}>Submit</Text>
                 </Button>
               </View>
@@ -85,7 +107,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 106, 205, 0.7)",
     margin: 8,
     marginTop: 12,
-    borderRadius: 8,
+    borderRadius: 8
   },
   viewStyle2: {
     height: 150,
