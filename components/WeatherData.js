@@ -11,12 +11,15 @@ import {
   Title
 } from "native-base";
 
+
 export default class WeatherData extends React.Component {
+
+
   render() {
     return (
       <View style={styles.viewStyle}>
         <View style={styles.dataStyle}>
-          <Text style={styles.textStyle}>Temperature</Text>
+          <Text style={styles.textStyle}>Temperature </Text>
           <Text style={styles.textStyle}>{this.props.temp} °C</Text>
         </View>
         <View style={styles.dataStyle}>

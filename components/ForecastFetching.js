@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Image } from "react-native";
+import { View, Image ,ScrollView} from "react-native";
 import ForecastCards from "./ForecastCards";
 import {
   Container,
@@ -8,7 +8,9 @@ import {
   Card,
   CardItem,
   Body,
-  Text
+  Text,
+  Tab,
+  Tabs
 } from "native-base";
 
 const API_KEY = "02c712e3cbbb06046fbef6d0861ed6af";
@@ -28,10 +30,10 @@ export default class ForecastFetching extends Component {
     };
   }
 
-  fetchData = () => {
+  fetchData = q => {
     fetch(
       `http://api.openweathermap.org/data/2.5/forecast?q=${
-        this.props.currentCity
+        q
       }&units=metric&appid=${API_KEY}`
     )
       .then(response => response.json())
@@ -100,20 +102,30 @@ export default class ForecastFetching extends Component {
       });
   };
 
-  componentDidMount = () => this.fetchData();
+  componentDidMount = () => this.fetchData(this.props.city);
+  componentWillReceiveProps = nextProps => this.fetchData(nextProps.city);
 
   render() {
     return (
-      <Content>
-        <ForecastCards hourlyForecast={this.state.hourlyForecast1} />
-        <ForecastCards hourlyForecast={this.state.hourlyForecast2} />
-        <ForecastCards hourlyForecast={this.state.hourlyForecast3} />
-        <ForecastCards hourlyForecast={this.state.hourlyForecast4} />
-        <ForecastCards hourlyForecast={this.state.hourlyForecast5} />
-        <ForecastCards hourlyForecast={this.state.hourlyForecast6} />
-        <ForecastCards hourlyForecast={this.state.hourlyForecast7} />
-        <ForecastCards hourlyForecast={this.state.hourlyForecast8} />
-      </Content>
+        <ScrollView>
+        <View>
+        <Tabs>
+          <Tab heading="Forecast">
+            <Content>
+              <ForecastCards hourlyForecast={this.state.hourlyForecast1} />
+              <ForecastCards hourlyForecast={this.state.hourlyForecast2} />
+              <ForecastCards hourlyForecast={this.state.hourlyForecast3} />
+              <ForecastCards hourlyForecast={this.state.hourlyForecast4} />
+              <ForecastCards hourlyForecast={this.state.hourlyForecast5} />
+              <ForecastCards hourlyForecast={this.state.hourlyForecast6} />
+              <ForecastCards hourlyForecast={this.state.hourlyForecast7} />
+              <ForecastCards hourlyForecast={this.state.hourlyForecast8} />
+            </Content>
+          </Tab>
+          <Tab heading="Travel" />
+        </Tabs>
+        </View>
+        </ScrollView>
     );
   }
 }

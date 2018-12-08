@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text, TextInput } from "react-native";
+import { StyleSheet, View, Text, TextInput ,ScrollView} from "react-native";
 import WeatherFetching from "./WeatherFetching";
+import Advice from "./Advice";
+import ForecastFetching from "./ForecastFetching"
 import Modal from "react-native-modalbox";
 import {
   Container,
@@ -13,8 +15,7 @@ import {
   Title,
   Content
 } from "native-base";
-import Advice from "./Advice";
-import TabBar from "./TabBar";
+
 
 export default class MainLayout extends Component {
   constructor(props) {
@@ -63,12 +64,16 @@ export default class MainLayout extends Component {
             <View style={styles.viewStyle2}>
               <Advice city={this.state.currentCity} />
             </View>
-            <Modal
+            
+          </View>
+          <ForecastFetching city={this.state.currentCity} />
+        </Content>
+        <Modal
               style={[styles.modal, styles.modal3]}
               position={"center"}
               ref={"modal3"}
             >
-              <Text>Search by city name</Text>
+              <Text style={{fontSize: 18}}>Search by city name</Text>
               <TextInput
                 placeholder="City name"
                 ref={el => (this.element = el)}
@@ -82,9 +87,6 @@ export default class MainLayout extends Component {
                 </Button>
               </View>
             </Modal>
-          </View>
-          <TabBar />
-        </Content>
       </Container>
     );
   }
@@ -107,7 +109,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 106, 205, 0.7)",
     margin: 8,
     marginTop: 12,
-    borderRadius: 8
+    borderRadius: 6
   },
   viewStyle2: {
     height: 150,
@@ -116,11 +118,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 106, 205, 0.7)",
     marginTop: 2,
     margin: 8,
-    borderRadius: 8
+    borderRadius: 6
   },
   modal3: {
-    height: 300,
-    width: 300
+    height: "60%",
+    width: "90%",
+    borderRadius: 6
   },
   modal: {
     justifyContent: "center",
@@ -137,10 +140,14 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   btn: {
-    borderRadius: 3
+    borderRadius: 3,
+    width: 100,
+    justifyContent: "center"
+    
   },
   submitText: {
     padding: 5,
-    color: "#DDDDDD"
+    color: "#DDDDDD",
+    fontSize: 16
   }
 });
