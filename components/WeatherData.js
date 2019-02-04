@@ -11,9 +11,10 @@ import {
   Title
 } from "native-base";
 
+import {heatindexcal} from "./functions/HeatIndexCal";
+
 
 export default class WeatherData extends React.Component {
-
 
   render() {
     return (
@@ -33,8 +34,8 @@ export default class WeatherData extends React.Component {
           <Text style={styles.textStyle}>{this.props.description}</Text>
         </View>
         <View style={styles.dataStyle}>
-          <Text style={styles.textStyle}>Humidity</Text>
-          <Text style={styles.textStyle}>{this.props.humidity} %</Text>
+          <Text style={styles.textStyle}>Feels like</Text>
+          <Text style={styles.textStyle}>{heatindexcal(this.props.temp,this.props.humidity)} °C</Text>
         </View>
       </View>
     );
