@@ -10,6 +10,8 @@ import {
   Icon,
   Title
 } from "native-base";
+import {advicecondition} from "./functions/AdviceCondition";
+
 
 export default class AdviceData extends React.Component {
   render() {
