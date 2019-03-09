@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Text, View } from "react-native";
 import {heatindexcal} from "./functions/HeatIndexCal";
-
+import {UnixTimeConverter} from "./functions/UnixTimeConverter"
 const API_KEY = "02c712e3cbbb06046fbef6d0861ed6af";
 
 export default class MoreWeatherData extends Component {
