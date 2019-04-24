@@ -67,7 +67,7 @@ export default class Advice extends React.Component {
               style={styles.iconStyle}
             />
             <Text style={styles.textStyle}>[chance of rain]</Text>
-            <Text style={styles.textStyle}> 43 %</Text>
+            <Text style={styles.textStyle}> 52 %</Text>
           </View>
         </View>
       </View>

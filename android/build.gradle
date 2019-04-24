@@ -2,11 +2,15 @@
 
 buildscript {
     ext {
+        googlePlayServicesVersion = "+" // default: "+"
+        firebaseVersion = "+"
         buildToolsVersion = "27.0.3"
         minSdkVersion = 16
         compileSdkVersion = 27
         targetSdkVersion = 26
         supportLibVersion = "27.1.1"
+        googlePlayServicesVersion = "11.8.0"
+        androidMapsUtilsVersion = "0.5+"
     }
     repositories {
         jcenter()
