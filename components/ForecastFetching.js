@@ -106,7 +106,7 @@ export default class ForecastFetching extends Component {
 
   render() {
     return (
-      <ScrollView>
+      <View>
         <View>
           <Tabs>
             <Tab heading="Forecast">
@@ -122,11 +122,13 @@ export default class ForecastFetching extends Component {
               </Content>
             </Tab>
             <Tab heading="Travel">
+            <Container>
               <MapCards/>
+              </Container>
             </Tab>
           </Tabs>
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }
