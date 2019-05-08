@@ -205,7 +205,11 @@ export default class MainLayout extends Component {
           position={"center"}
           ref={"modal2"}
         >
-          <Text style={{ fontSize: 18 }}>Options</Text>
+        <TouchableOpacity
+        onPress={() => this.refs.modal4.open()}
+        >
+          <Text style={{ fontSize: 18 }}>Notification Settings</Text>
+          </TouchableOpacity>
           <Text style={{ fontSize: 18, marginTop: 10 }}>About</Text>
         </Modal>
         {
@@ -217,6 +221,15 @@ export default class MainLayout extends Component {
           ref={"modal1"}
         >
           <MoreWeatherData city={this.state.currentCity} />
+        </Modal>
+        <Modal
+          style={[styles.modal, styles.modal3]}
+          position={"center"}
+          ref={"modal4"}
+        >
+        <Text>
+          Notification Settings
+          </Text>
         </Modal>
       </Container>
     );
