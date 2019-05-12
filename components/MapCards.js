@@ -296,7 +296,7 @@ const styles = StyleSheet.create({
     color: "#222"
   },
   eventList: {
-    top: "60%",
+    top: "65%",
     left: 0,
     right: 0,
     bottom: 0,
@@ -307,7 +307,7 @@ const styles = StyleSheet.create({
     borderRadius: 10
   },
   eventList2: {
-    top: "62%",
+    top: "67%",
     left: 0,
     right: 0,
     bottom: 0,
@@ -319,7 +319,7 @@ const styles = StyleSheet.create({
 
   },
   eventList3: {
-    top: "65%",
+    top: "69%",
     left: 0,
     right: 0,
     bottom: 0,

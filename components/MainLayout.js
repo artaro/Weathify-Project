@@ -24,6 +24,7 @@ import {
   Title,
   Content
 } from "native-base";
+import PNotification from "./services/PNotification";
 
 export default class MainLayout extends Component {
   constructor(props) {
@@ -210,7 +211,11 @@ export default class MainLayout extends Component {
         >
           <Text style={{ fontSize: 18 }}>Notification Settings</Text>
           </TouchableOpacity>
+          <TouchableOpacity
+        onPress={() => this.refs.modal5.open()}
+        >
           <Text style={{ fontSize: 18, marginTop: 10 }}>About</Text>
+          </TouchableOpacity>
         </Modal>
         {
           //Modal box of more weather data
@@ -227,8 +232,20 @@ export default class MainLayout extends Component {
           position={"center"}
           ref={"modal4"}
         >
+        <View>
         <Text>
           Notification Settings
+          </Text>
+          <PNotification city={this.state.selectedCity}/>
+          </View>
+        </Modal>
+        <Modal
+          style={[styles.modal, styles.modal3]}
+          position={"center"}
+          ref={"modal5"}
+        >
+        <Text>
+          This Application Dev By artaro
           </Text>
         </Modal>
       </Container>
